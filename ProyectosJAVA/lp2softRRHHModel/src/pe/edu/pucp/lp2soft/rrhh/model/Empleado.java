@@ -5,19 +5,41 @@
  */
 package pe.edu.pucp.lp2soft.rrhh.model;
 
+import java.io.Serializable; //esto se tiene que poner para escribir en 
+import java.util.Date;
+                                //el archivo binario
+
 /**
  *
  * @author DAYANA
  */
-public class Empleado extends Persona {
-    private String cargo;
-    private double sueldo;
+public class Empleado extends Persona implements Serializable {
+    private String cargo; //25 bytes
+    private double sueldo; //8 bytes
     private Area area;
+    
+    public Empleado(){}
 
+    public Empleado(String nombreCompleto, String DNI, Date fechaNacimiento, int edad, char genero,String cargo, double sueldo, Area area) {
+        super(nombreCompleto, DNI, fechaNacimiento, edad, genero);
+        this.cargo = cargo;
+        this.sueldo = sueldo;
+        this.area = area;
+    }
+    
+    
     public Empleado(int idPersona, String nombreCompleto, String DNI,
             String cargo, double sueldo) {
         super(idPersona, nombreCompleto, DNI);
-        this.cargo = cargo;
+        
+        if(nombreCompleto.length()<25){
+            this.cargo = String.format("%-25s", cargo);
+            //completa con espacios a la derecha del nombre
+        }
+        else
+            this.cargo = cargo.substring(0,25);
+        
+        
         this.sueldo = sueldo;
     }
 
@@ -44,6 +66,11 @@ public class Empleado extends Persona {
 
     public void setArea(Area area) {
         this.area = area;
+    }
+
+    @Override
+    public String toString() {
+        return getIdPersona() + " " + getNombreCompleto() + " "+ cargo;
     }
     
     
