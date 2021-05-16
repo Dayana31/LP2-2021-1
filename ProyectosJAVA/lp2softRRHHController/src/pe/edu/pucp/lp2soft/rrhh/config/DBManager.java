@@ -6,9 +6,14 @@
 package pe.edu.pucp.lp2soft.rrhh.config;
 
 public abstract class DBManager {
-    public static String url = "jdbc:mysql:"
-            + "//quilla.inf.pucp.edu.pe:3306/a20180196";
-    public static String user = "a20180196";
-    public static String password = "KA5myHkT";
+    public static String urlMSSQL = "jdbc:sqlserver:"
+            + "//database-mssql-030521.cmaxickifv0x.us-east-1.rds.amazonaws.com;"
+            + "database=lp2;";
+    public static String urlMySQL = "jdbc:mysql:"
+            + "//database-mysql-030521.cmaxickifv0x.us-east-1.rds.amazonaws.com"
+            + ":3306/lp2";
+
+    public static String user = "admin";
+    public static String password = "lp220211";
     
 }

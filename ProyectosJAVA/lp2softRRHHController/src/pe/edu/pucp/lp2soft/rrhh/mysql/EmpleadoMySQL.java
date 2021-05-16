@@ -1,8 +1,10 @@
 
 package pe.edu.pucp.lp2soft.rrhh.mysql;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,13 +12,44 @@ import pe.edu.pucp.lp2soft.rrhh.config.DBManager;
 import pe.edu.pucp.lp2soft.rrhh.dao.EmpleadoDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.Empleado;
 import java.util.Date;
+import pe.edu.pucp.lp2soft.rrhh.model.Area;
 public class EmpleadoMySQL implements EmpleadoDAO{
     Connection con; //java.sql.Connection
     Statement st; //java.sql.Statement
-    
+    ResultSet rs;
+    CallableStatement cs;
     @Override
     public ArrayList<Empleado> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.urlMySQL, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_EMPLEADOS()}");
+            rs = cs.executeQuery();
+            while(rs.next()){
+                Empleado empleado = new Empleado();
+                empleado.setIdPersona(rs.getInt("id_persona"));
+                empleado.setNombreCompleto(rs.getString("nombre_completo"));
+                empleado.setDNI(rs.getString("DNI"));
+                empleado.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                empleado.setEdad(rs.getInt("edad"));
+                empleado.setGenero(rs.getString("genero").charAt(0));
+                empleado.setCargo(rs.getString("cargo"));
+                empleado.setSueldo(rs.getDouble("sueldo"));
+                empleado.setArea(new Area());
+                empleado.getArea().setIdArea(rs.getInt("id_area"));
+                empleado.getArea().setNombre(rs.getString("nombre_area"));
+                empleado.setActivo(true);
+                empleados.add(empleado);
+            }
+            rs.close();
+            cs.close();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return empleados;
     }
 
     @Override
@@ -26,27 +59,28 @@ public class EmpleadoMySQL implements EmpleadoDAO{
             //registrar el driver
            Class.forName("com.mysql.cj.jdbc.Driver");
            //creamos la conexion
-           con = DriverManager.getConnection(DBManager.url,
+           con = DriverManager.getConnection(DBManager.urlMySQL,
                    DBManager.user,DBManager.password);
            //creamos un statement para ejecutar una instruccion
-           st = con.createStatement();
-           SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-           //instruccion sql
-           //las comillas simples van cuando se manda string, si es 
-           //entero no va comillas simples
-           String instruccionSQL = "INSERT INTO persona(nombre_completo,"
-                   + "DNI,fecha_nacimiento,edad,genero) VALUES("
-                   + "'"+ empleado.getNombreCompleto() + "','" +
-                   empleado.getDNI()+ "','"+formato.format(empleado.getFechaNacimiento())+
-                   "'," + empleado.getEdad()+ ",'" + empleado.getGenero()+
-                            "')";
-           //en caso funcione devuelve 1, caso contrario es 0
-           resultado = st.executeUpdate(instruccionSQL);
-           
-           //es importante cerrar la conexion
-           con.close();
+           cs = con.prepareCall("{call INSERTAR_EMPLEADO(?,?,?,?,?,?,?,?,?)}");
+           cs.registerOutParameter("_id_empleado",java.sql.Types.INTEGER);
+           cs.setInt("_fid_area",empleado.getArea().getIdArea());
+           cs.setString("_nombre_completo",empleado.getNombreCompleto());
+           cs.setString("_DNI",empleado.getDNI());
+           cs.setDate("_fecha_nacimiento",new java.sql.Date(empleado.getFechaNacimiento().getTime()));
+           cs.setInt("_edad", empleado.getEdad());
+           cs.setString("_genero", String.valueOf(empleado.getGenero()));
+           cs.setString("_cargo", empleado.getCargo());
+           cs.setDouble("_sueldo", empleado.getSueldo());
+           cs.executeUpdate();
+           empleado.setIdPersona(cs.getInt("_id_empleado"));
+           resultado=1;
+           cs.close();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
+        }finally{
+            //esto siempre se va a ejecutar
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         
         return resultado;
@@ -54,12 +88,48 @@ public class EmpleadoMySQL implements EmpleadoDAO{
 
     @Override
     public int modificar(Empleado empleado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       int resultado = 0;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.urlMySQL, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call MODIFICAR_EMPLEADO(?,?,?,?,?,?,?,?,?)}");
+            cs.setInt("_id_empleado", empleado.getIdPersona());
+            cs.setInt("_fid_area", empleado.getArea().getIdArea());
+            cs.setString("_nombre_completo", empleado.getNombreCompleto());
+            cs.setString("_DNI", empleado.getDNI());
+            cs.setDate("_fecha_nacimiento", new java.sql.Date(empleado.getFechaNacimiento().getTime()));
+            cs.setInt("_edad", empleado.getEdad());
+            cs.setString("_genero", String.valueOf(empleado.getGenero()));
+            cs.setString("_cargo", empleado.getCargo());
+            cs.setDouble("_sueldo", empleado.getSueldo());
+            cs.executeUpdate();
+            resultado = 1;
+            cs.close();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());};
+        }
+        return resultado;
     }
 
     @Override
     public int eliminar(int idEmpleado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int resultado = 0;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.urlMySQL, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ELIMINAR_EMPLEADO(?)}");
+            cs.setInt("_id_empleado", idEmpleado);
+            cs.executeUpdate();
+            resultado = 1;
+            cs.close();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());};
+        }
+        return resultado;
     }
     
 }

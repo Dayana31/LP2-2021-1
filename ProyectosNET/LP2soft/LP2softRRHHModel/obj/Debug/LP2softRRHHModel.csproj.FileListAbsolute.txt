@@ -1,0 +1,6 @@
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHModel\bin\Debug\LP2softRRHHModel.dll
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHModel\bin\Debug\LP2softRRHHModel.pdb
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHModel\obj\Debug\LP2softRRHHModel.csprojAssemblyReference.cache
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHModel\obj\Debug\LP2softRRHHModel.csproj.CoreCompileInputs.cache
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHModel\obj\Debug\LP2softRRHHModel.dll
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHModel\obj\Debug\LP2softRRHHModel.pdb

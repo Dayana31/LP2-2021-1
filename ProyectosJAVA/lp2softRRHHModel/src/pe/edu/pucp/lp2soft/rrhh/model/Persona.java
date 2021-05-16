@@ -49,8 +49,6 @@ public class Persona implements Serializable{
         
     }
 
-    
-    
     public int getIdPersona() {
         return idPersona;
     }
@@ -79,13 +77,27 @@ public class Persona implements Serializable{
         return fechaNacimiento;
     }
 
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public int getEdad() {
         return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public char getGenero() {
         return genero;
     }
+
+    public void setGenero(char genero) {
+        this.genero = genero;
+    }
+
     
+  
     
 }

@@ -13,11 +13,26 @@ import java.util.ArrayList;
 public class Area {
     private int idArea;
     private String nombre;
+    private boolean activo;
+    
     private ArrayList<Empleado> empleados;
 
     public Area(int idArea, String nombre) {
         this.idArea = idArea;
         this.nombre = nombre;
+     
+    }
+
+    public Area() {
+        
+    }
+
+    public boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
 
@@ -43,6 +58,12 @@ public class Area {
 
     public void setEmpleados(ArrayList<Empleado> empleados) {
         this.empleados = empleados;
+    }
+
+ 
+    @Override
+    public String toString() {
+        return  idArea + " - " + nombre;
     }
     
     

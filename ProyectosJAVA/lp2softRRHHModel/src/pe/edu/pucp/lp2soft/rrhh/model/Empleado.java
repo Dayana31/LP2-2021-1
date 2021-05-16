@@ -17,6 +17,7 @@ public class Empleado extends Persona implements Serializable {
     private String cargo; //25 bytes
     private double sueldo; //8 bytes
     private Area area;
+    private boolean activo;
     
     public Empleado(){}
 
@@ -66,6 +67,14 @@ public class Empleado extends Persona implements Serializable {
 
     public void setArea(Area area) {
         this.area = area;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override

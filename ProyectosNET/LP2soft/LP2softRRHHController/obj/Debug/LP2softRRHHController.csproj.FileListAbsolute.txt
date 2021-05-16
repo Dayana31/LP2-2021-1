@@ -1,0 +1,10 @@
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\bin\Debug\LP2softRRHHController.dll
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\bin\Debug\LP2softRRHHController.pdb
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\bin\Debug\LP2softRRHHModel.dll
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\bin\Debug\MySql.Data.dll
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\bin\Debug\LP2softRRHHModel.pdb
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\obj\Debug\LP2softRRHHController.csprojAssemblyReference.cache
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\obj\Debug\LP2softRRHHController.csproj.CoreCompileInputs.cache
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\obj\Debug\LP2softRRHHController.csproj.CopyComplete
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\obj\Debug\LP2softRRHHController.dll
+C:\Repositorios\LP2-2021-1 ME\ProyectosNET\LP2soft\LP2softRRHHController\obj\Debug\LP2softRRHHController.pdb

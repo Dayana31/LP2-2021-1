@@ -21,3 +21,29 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/ProyectosJAVA/CLASE 190421/nbproject/private/
+/ProyectosJAVA/CLASE 190421/build/
+/ProyectosJAVA/CLASE 190421/dist/
+/ProyectosJAVA/lp2softRRHHModel/nbproject/private/
+/ProyectosJAVA/lp2softRRHHModel/dist/
+/ProyectosJAVA/lp2softRRHHModel/build/
+/ProyectosJAVA/lp2softGestClientesModel/nbproject/private/
+/ProyectosJAVA/lp2softGestClientesModel/build/
+/ProyectosJAVA/lp2softGestClientesModel/dist/
+/ProyectosJAVA/lp2soft/nbproject/private/
+/ProyectosJAVA/lp2soft/build/
+/ProyectosJAVA/lp2soft/dist/
+/ProyectosJAVA/lab03-20180196/nbproject/private/
+/ProyectosJAVA/lab03-20180196/build/
+/ProyectosJAVA/lab03-20180196/dist/
+!/ProyectosJAVA/lab03-20180196/src/pe/edu/pucp/hungrysoft/lib/ventas.jar
+!/ProyectosJAVA/lab03-20180196/src/pe/edu/pucp/hungrysoft/lib/interfaces.jar
+!/ProyectosJAVA/lab03-20180196/src/pe/edu/pucp/hungrysoft/lib/organizacion.jar
+!/ProyectosJAVA/lab03-20180196/src/pe/edu/pucp/hungrysoft/lib/logistica.jar
+/ProyectosJAVA/lp2softRRHHController/nbproject/private/
+/ProyectosJAVA/lp2softRRHHController/build/
+!/ProyectosJAVA/lp2softRRHHController/src/pe/edu/pucp/lp2soft/rrhh/lib/mysql-connector-java-8.0.24.jar
+/ProyectosJAVA/lp2softRRHHController/dist/
+!/ProyectosJAVA/lp2soft/src/pe/edu/pucp/lp2soft/lib/mysql-connector-java-8.0.24.jar
+!/ProyectosJAVA/lp2soft/src/pe/edu/pucp/lp2soft/lib/mssql-jdbc-9.2.1.jre8.jar
+!/ProyectosJAVA/lp2softRRHHController/src/pe/edu/pucp/lp2soft/rrhh/lib/mssql-jdbc-9.2.1.jre8.jar
